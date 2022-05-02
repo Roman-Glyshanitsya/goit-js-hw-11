@@ -39,7 +39,7 @@ let galleryLightBox = new SimpleLightbox('.gallery a', options.simpleLightBox);
 function onFormSubmit(e) {
   e.preventDefault();
 
-  const isFilled = e.currentTarget.elements.searchQuery.value;
+  const isFilled = e.currentTarget.elements.searchQuery.value.trim();
   if (isFilled) {
     searchButton.disabled = true;
     loadService.searchQuery = isFilled;
@@ -47,6 +47,8 @@ function onFormSubmit(e) {
     gallery.innerHTML = '';
     loadPictures();
   }
+
+  e.currentTarget.reset();
 }
 
 function loadPictures() {
